@@ -275,7 +275,7 @@ class WalletPlotlyTradingChart(BaseRenderer):
 
         these_trades=OrderedDict()
         for k,v in trades.items():
-            if v[0].quote_instrument.symbol == self.quote_instrument_prefix:
+            if v[0].quote_instrument.symbol == self.quote_instrument_prefix and v[0].ExchangePair.startswith(self.exchange_prefix):
                 these_trades[k]=v
 
         self.fig.layout.annotations += self._create_trade_annotations(these_trades, price_history)
